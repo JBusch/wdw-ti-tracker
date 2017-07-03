@@ -1,0 +1,8 @@
+<h2>Status</h2>
+
+<div>
+  User is:
+  <pre> {{ (user | async | json) }}</pre>
+</div>
+
+<button md-raised-button (click)="logout()">Logout</button>

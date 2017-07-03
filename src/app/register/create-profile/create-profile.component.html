@@ -1,0 +1,9 @@
+<h2>Bitte gib einen Nickname ein um fortzufahren</h2>
+
+<form [formGroup]="form">
+  <md-input-container>
+    <input mdInput placeholder="Nickname" type="text" formControlName="displayName">
+  </md-input-container>
+
+  <button md-raised-button (click)="setDisplayName()">Weiter</button>
+</form>

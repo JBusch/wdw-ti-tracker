@@ -1,6 +1,6 @@
 import { WdwTwiRoundtrackerPage } from './app.po';
 
-describe('wdw-twi-roundtracker App', () => {
+describe('wdw-ti-tracker App', () => {
   let page: WdwTwiRoundtrackerPage;
 
   beforeEach(() => {
