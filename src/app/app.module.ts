@@ -13,6 +13,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserProfileService} from './shared/user-profile.service';
+import {ValidationService} from './shared/validation.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {UserProfileService} from './shared/user-profile.service';
   ],
   providers: [
     AuthService,
-    UserProfileService
+    UserProfileService,
+    ValidationService
   ],
   bootstrap: [AppComponent]
 })

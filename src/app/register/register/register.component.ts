@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../shared/auth.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {ValidationService} from '../../shared/validation.service';
 
 @Component({
   selector: 'wdw-register',
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private validationService: ValidationService) {
   }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       confirm: ['', Validators.required]
+    });
+
+    this.validationService.validateEmailInUse(this.form).subscribe((value) => {
+      console.log(value);
     });
 
   }
@@ -35,7 +41,6 @@ export class RegisterComponent implements OnInit {
   }
 
   isPasswordMatch() {
-    console.log(this.form.value);
     return this.form.value.password === this.form.value.confirm && this.form.value.password !== '';
   }
 
