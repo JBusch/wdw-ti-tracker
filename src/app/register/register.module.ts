@@ -2,17 +2,14 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RegisterComponent} from './register/register.component';
 import {RegisterRoutingModule} from './register-routing.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from '../material/material.module';
-import { CreateProfileComponent } from './create-profile/create-profile.component';
+import {CreateProfileComponent} from './create-profile/create-profile.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RegisterRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
+    SharedModule
   ],
   declarations: [RegisterComponent, CreateProfileComponent]
 })

@@ -22,19 +22,12 @@ export class ValidationService {
       .switchMap((formvalue) => {
         return Observable.fromPromise(this.afAuth.auth.fetchProvidersForEmail(formvalue.email))
           .catch((error, caught) => {
-            console.log(error);
-            return Observable.of([]);
+            return Observable.of(false);
           });
       })
-      .do(console.log)
-      // .map(fireBaseResponse => fireBaseResponse.json())
-      .filter((fireBaseResponse) => fireBaseResponse.length !== 0)
-      .map(() => true)
-      // .mergeMap((res) => res)
-      .catch((error, caught) => {
-        console.log(error);
-        return Observable.of(false);
-      });
+      .switchMap((result) => {
+        return result && result.length ? Observable.of(true) : Observable.of(false)
+      })
   }
 
 }

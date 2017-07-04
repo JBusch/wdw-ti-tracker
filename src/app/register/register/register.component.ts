@@ -12,6 +12,23 @@ import {ValidationService} from '../../shared/validation.service';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
+  errorEmailInUse$: Observable<boolean>;
+  formErrors = {
+    'name': '',
+    'email': ''
+  };
+  validationMessages = {
+    'name': {
+      'required': 'Name is required.',
+      'minlength': 'Name must be at least 4 characters long.',
+      'maxlength': 'Name cannot be more than 24 characters long.',
+      'forbiddenName': 'Someone named "Bob" cannot be a hero.'
+    },
+    'email': {
+      'required': 'Email is required.'
+    }
+  };
+
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -27,10 +44,38 @@ export class RegisterComponent implements OnInit {
       confirm: ['', Validators.required]
     });
 
-    this.validationService.validateEmailInUse(this.form).subscribe((value) => {
-      console.log(value);
-    });
+    this.errorEmailInUse$ = this.validationService.validateEmailInUse(this.form);
 
+    this.form.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged(); // (re)set validation messages now
+
+  }
+
+
+  onValueChanged(data?: any) {
+    if (!this.form) {
+      return;
+    }
+    const form = this.form;
+
+    for (const field in this.formErrors) {
+      if (this.formErrors.hasOwnProperty(field)) {
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            if (control.errors.hasOwnProperty(key)) {
+              this.formErrors[field] += messages[key] + ' ';
+            }
+          }
+        }
+      }
+    }
   }
 
   signUp() {
