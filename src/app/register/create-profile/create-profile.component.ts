@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {UserProfileService} from '../../shared/user-profile.service';
 import 'rxjs/add/operator/debounceTime';
+import {ValidationService} from '../../shared/validation.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'wdw-create-profile',
@@ -14,13 +16,13 @@ export class CreateProfileComponent implements OnInit {
 
   form: FormGroup;
   user: firebase.User;
-  errorUsernameInUse = false;
-
+  errorUsernameInUse$: Observable<boolean>;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               public afAuth: AngularFireAuth,
-              private userProfileService: UserProfileService) {
+              private userProfileService: UserProfileService,
+              private validationService: ValidationService) {
   }
 
   ngOnInit() {
@@ -35,16 +37,13 @@ export class CreateProfileComponent implements OnInit {
 
     this.form.valueChanges.debounceTime(400).subscribe((value) => console.log);
 
+    this.errorUsernameInUse$ = this.validationService.validateUsernameInUse(this.form);
+
   }
 
   setDisplayName(): void {
     this.userProfileService.updateDisplayName(this.user, this.form.value.displayName).subscribe((result) => {
-      if (result === 'Error: Username already in use') {
-        this.errorUsernameInUse = true;
-      } else {
-        this.router.navigate(['home']);
-      }
+      this.router.navigate(['home']);
     });
   }
-
 }

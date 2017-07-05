@@ -4,10 +4,9 @@
   <md-input-container>
     <input mdInput placeholder="Nickname" type="text" formControlName="displayName">
   </md-input-container>
-
-  <button md-raised-button (click)="setDisplayName()">Weiter</button>
+  <button md-raised-button (click)="setDisplayName()" [disabled]="errorUsernameInUse$ | async">Weiter</button>
 </form>
 
-<div class="error error-username-in-use">
+<md-error *ngIf="errorUsernameInUse$ | async" class="error error-username-in-use">
   Dieser Benutzername ist bereits vergeben, bitte gib einen alternativen Benutzernamen ein!
-</div>
+</md-error>

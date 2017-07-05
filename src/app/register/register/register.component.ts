@@ -14,8 +14,9 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   errorEmailInUse$: Observable<boolean>;
   formErrors = {
-    'name': '',
-    'email': ''
+    'email': '',
+    'password': '',
+    'confirm': ''
   };
   validationMessages = {
     'name': {
@@ -37,7 +38,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
