@@ -1,6 +1,40 @@
+@import 'app/shared/scss/reset';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900');
+@import url('~https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html {
+  height: 100%;
+}
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: #555;
+  background-image: radial-gradient(circle, #777, #333);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+$heading-fontsize-base: 2rem;
+
+// Typography
+h1 {
+  font-size: $heading-fontsize-base;
+  line-height: $heading-fontsize-base * 2.5;
+}
+
+h2 {
+  font-size: $heading-fontsize-base - 0.2rem;
+  line-height: $heading-fontsize-base * 2.3;
+}
+
+h3 {
+  font-size: $heading-fontsize-base - 0.4rem;
+  line-height: $heading-fontsize-base * 2.1;
+}
+
+h4 {
+  font-size: $heading-fontsize-base - 0.6rem;
+  line-height: $heading-fontsize-base * 1.9;
 }

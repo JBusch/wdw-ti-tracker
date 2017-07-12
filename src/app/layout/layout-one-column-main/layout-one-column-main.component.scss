@@ -1,0 +1,14 @@
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.column-main {
+  background-color: #fff;
+  width: calc(80vw - 4rem);
+  height: calc(80vh - 4rem);
+  padding: 4rem;
+}

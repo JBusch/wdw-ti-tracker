@@ -13,6 +13,9 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserProfileService} from './shared/user-profile.service';
 import {ValidationService} from './shared/validation.service';
 import {SharedModule} from './shared/shared.module';
+import {LayoutModule} from './layout/layout.module';
+
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {SharedModule} from './shared/shared.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    SharedModule
+    SharedModule,
+    LayoutModule
   ],
   providers: [
     AuthService,
