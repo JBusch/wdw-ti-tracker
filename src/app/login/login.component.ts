@@ -29,8 +29,10 @@ export class LoginComponent implements OnInit {
   login() {
     const formValue = this.form.value;
     this.authService.loginEmail(formValue.email, formValue.password)
-      .subscribe(() => {
-        this.router.navigate(['/home']);
+      .subscribe((next) => {
+        console.log(next);
+
+        // this.router.navigate(['/home']);
       });
   }
 

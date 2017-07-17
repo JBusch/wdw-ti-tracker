@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomeModule'
   },
   {
+    path: 'user',
+    loadChildren: './user/user.module#UserModule'
+  },
+  {
     path: 'login',
     component: LoginComponent
   }

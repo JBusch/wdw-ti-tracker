@@ -16,6 +16,8 @@ import {SharedModule} from './shared/shared.module';
 import {LayoutModule} from './layout/layout.module';
 
 import 'hammerjs';
+import {MessagesService} from './shared/messages.service';
+import {MessagesModule} from './messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,17 @@ import 'hammerjs';
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     SharedModule,
-    LayoutModule
+    LayoutModule,
+    MessagesModule
   ],
   providers: [
     AuthService,
     UserProfileService,
-    ValidationService
+    ValidationService,
+    MessagesService
+  ],
+  exports: [
+    LayoutModule
   ],
   bootstrap: [AppComponent]
 })

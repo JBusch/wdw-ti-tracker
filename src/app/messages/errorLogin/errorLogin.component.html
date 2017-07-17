@@ -1,0 +1,9 @@
+<h1>{{ title }}</h1>
+<p>{{ message }}</p>
+<p>Passwort vergessen? Hier kannst du ein neues Passwort beantragen</p>
+
+
+<button type="button" md-raised-button (click)="dialogRef.close(true)">Schließen</button>
+<button type="button" md-raised-button (click)="dialogRef.close(true)" routerLink="/user/reset-password">Passwort
+  resetten
+</button>
