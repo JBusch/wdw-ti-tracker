@@ -18,6 +18,7 @@ import {LayoutModule} from './layout/layout.module';
 import 'hammerjs';
 import {MessagesService} from './shared/messages.service';
 import {MessagesModule} from './messages/messages.module';
+import {GamesService} from './shared/games.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MessagesModule} from './messages/messages.module';
     AuthService,
     UserProfileService,
     ValidationService,
-    MessagesService
+    MessagesService,
+    GamesService
   ],
   exports: [
     LayoutModule

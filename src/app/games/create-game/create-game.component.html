@@ -1,0 +1,20 @@
+<wdw-layout-one-column-main>
+
+  <form novalidate [formGroup]="form" (ngSubmit)="createGame(form)">
+    <md-input-container>
+      <input mdInput placeholder="Name des Spiels" type="text" name="gameName" formControlName="gameName"/>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Anzahl Spieler" type="number" name="numberOfPlayers"
+             formControlName="numberOfPlayers"/>
+    </md-input-container>
+    <md-checkbox name="protectGameWithPassword" formControlName="protectGameWithPassword">Spiel mit Passwort versehen?
+    </md-checkbox>
+    <md-input-container>
+      <input mdInput placeholder="Passwort" type="text" name="gamePassword" formControlName="gamePassword"/>
+    </md-input-container>
+
+    <button md-raised-button>Senden</button>
+  </form>
+
+</wdw-layout-one-column-main>

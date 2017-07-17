@@ -1,8 +1,16 @@
-<h2>Status</h2>
+<wdw-layout-two-column-main-right>
 
-<div>
-  User is:
-  <pre> {{ (user | async | json) }}</pre>
-</div>
+  <div class="column-main-content">
+    <h1>Willkommen</h1>
+    <p>Hier könnt ihr ein neues Spiel anlegen
+      <button md-raised-button routerLink="/games/create-game">Neues Spiel anlegen</button>
+    </p>
 
-<button md-raised-button (click)="logout()">Logout</button>
+
+  </div>
+
+  <div class="column-right-content">
+    <h2>Laufende Spiele</h2>
+  </div>
+
+</wdw-layout-two-column-main-right>
