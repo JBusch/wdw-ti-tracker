@@ -3,6 +3,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/empty';
+import 'rxjs/add/observable/of';
 import {MessagesService} from './messages.service';
 
 @Injectable()
@@ -39,8 +40,8 @@ export class AuthService {
           console.log(err);
         })
     )
-      .map(() => Observable.of(true))
-      .catch((err) => {
+      .map(() => true )
+      .catch(() => {
         return Observable.of(true);
       });
   }
