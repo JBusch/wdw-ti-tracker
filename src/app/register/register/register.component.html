@@ -1,8 +1,6 @@
-<div class="container"
-     fxLayout="column">
+<wdw-layout-one-column-main>
   <h1>Registrieren</h1>
-  <form novalidate [formGroup]="form"
-        fxLayout="column">
+  <form [formGroup]="form" class="container" fxLayout="column">
     <md-input-container>
       <input mdInput placeholder="Email" type="text" name="email" formControlName="email" required/>
     </md-input-container>
@@ -22,6 +20,4 @@
 
     <button md-raised-button (click)="signUp()" [disabled]="!isPasswordMatch()">Registrieren</button>
   </form>
-
-</div>
-
+</wdw-layout-one-column-main>

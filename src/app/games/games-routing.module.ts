@@ -1,8 +1,9 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {GamesComponent} from './games/games.component';
-import {CreateGameComponent} from './create-game/create-game.component';
-import {GameComponent} from './game/game.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { GamesComponent } from './games/games.component';
+import { CreateGameComponent } from './create-game/create-game.component';
+import { GameComponent } from './game/game.component';
+import { RoomGuard } from '../shared/guards/room.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: ':uid',
-    component: GameComponent
+    component: GameComponent,
+    canActivate: [RoomGuard]
   }
 ];
 

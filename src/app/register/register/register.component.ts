@@ -67,8 +67,6 @@ export class RegisterComponent implements OnInit {
     for (const field in this.formErrors) {
       if (this.formErrors.hasOwnProperty(field)) {
         // clear previous error message (if any)
-        console.log(this.form);
-
         this.formErrors[field] = '';
         const control = form.get(field);
 

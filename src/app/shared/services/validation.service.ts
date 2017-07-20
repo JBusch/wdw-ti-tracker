@@ -20,10 +20,18 @@ export class ValidationService {
     return form.valueChanges
       .debounceTime(400)
       .switchMap((formvalue) => {
-        return Observable.fromPromise(this.afAuth.auth.fetchProvidersForEmail(formvalue.email))
-          .catch((error, caught) => {
-            return Observable.of(false);
-          });
+        const emailRegex =
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const match = emailRegex.test(formvalue.email);
+
+        if (match) {
+          return Observable.fromPromise(this.afAuth.auth.fetchProvidersForEmail(formvalue.email))
+            .catch((error, caught) => {
+              return Observable.of(false);
+            });
+        } else {
+          return Observable.of(true);
+        }
       })
       .switchMap((result) => {
         return result && result.length ? Observable.of(true) : Observable.of(false)

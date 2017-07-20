@@ -1,6 +1,17 @@
-<div *ngIf="game | async as game">
-  <h1>Willkommen im Spiel: {{ game.gameName }}</h1>
+<wdw-layout-two-column-main-right *ngIf="game$ | async as game$">
+  <div class="column-main-content">
+    <h1>Willkommen im Spiel: {{ game$.gameName }}</h1>
 
-</div>
+    <p>Es sind Aktuell {{ game$ | json}}</p>
 
+  </div>
 
+  <div class="column-right-content">
+    Aktuell verbundene Spieler:
+    <md-list *ngFor="let user of usersJoinedCount$ | async">
+      <md-list-item>
+        {{ user.username }}
+      </md-list-item>
+    </md-list>
+  </div>
+</wdw-layout-two-column-main-right>

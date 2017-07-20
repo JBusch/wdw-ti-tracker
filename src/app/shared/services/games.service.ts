@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
-import {FormGroup} from '@angular/forms';
-import {Game} from '../models/game.model';
-import {UserService} from './user.service';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { FormGroup } from '@angular/forms';
+import { Game } from '../models/game.model';
+import { UserService } from './user.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class GamesService {
@@ -38,7 +38,7 @@ export class GamesService {
     });
   }
 
-  // Returns the current game
+  // Returns the current game$
   getGame(gameUid): Observable<Game> {
     return this.db.object(`games/${gameUid}`)
   }
@@ -51,20 +51,52 @@ export class GamesService {
   }
 
   // Todo make the obseravable complete
-  addUserToGame(gameUid: string, user: firebase.User): Observable<void> {
+  addUserToGame(gameUid: string, user: firebase.User): Observable<boolean> {
     return Observable.fromPromise(
       this.db.object(`joinedUsers/${gameUid}/`)
-        .update({[user.uid]: user.displayName}).then((res) => {
+        .update({
+          [user.uid]: {username: user.displayName, count: 0}
+        }).then((res) => {
         console.log(res);
       })
-    ).take(1);
+    ).map(() => true)
+      .catch(err => {
+        return Observable.of(false);
+      })
+      .take(1);
   }
 
-  removeUSerFromGame(gameUid: string, user: firebase.User) {
+  // addUserToGame(gameUid: string, user: firebase.User): any {
+  //   return this.db.object(`joinedUsers/${gameUid}/${user.uid}`)
+  //     .map((mappedUser) => {
+  //       // if (!mappedUser.$exists) {
+  //       return this.db.object(`joinedUsers/${gameUid}/`)
+  //         .update({
+  //           [user.uid]: {username: user.displayName, count: 0}
+  //         }).then((res) => {
+  //           console.log(res);
+  //         })
+  //         .catch(error => {
+  //           console.log(error);
+  //         })
+  //       // } else {
+  //       //   return this.db.object(`joinedUsers/${gameUid}/${user.uid}`)
+  //       //   // .update({count: ++mappedUser.count})
+  //       // }
+  //     }).take(1);
+  //
+  // }
+
+
+  removeUSerFromGame(gameUid: string, user: firebase.User): Observable<void> {
     return Observable.fromPromise(
       this.db.object(`joinedUsers/${gameUid}/${user.uid}`)
         .remove()
     ).take(1);
+  }
+
+  getJoinedUsers(gameUid$) {
+    return gameUid$.switchMap((gameUid) => this.db.list(`joinedUsers/${gameUid}`));
   }
 
 

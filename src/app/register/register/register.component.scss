@@ -5,6 +5,34 @@
   width: 100%;
 }
 
+//:host(.column-main),
+//:host-context(wdw-layout-one-column-main) {
+//  text-transform: uppercase;
+//}
+
+//::content {
+//  text-transform: uppercase;
+//  width: 400px;
+//  align-self: center;
+//}
+
 form {
   width: 400px;
 }
+
+:host /deep/ wdw-layout-one-column-main .column-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+//:host ::ng-deep .column-main {
+//  text-transform: uppercase;
+//}
+//
+//.column-main {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//}
+

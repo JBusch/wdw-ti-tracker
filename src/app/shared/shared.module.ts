@@ -4,6 +4,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { RoomGuard } from './guards/room.guard';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {RouterModule} from '@angular/router';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [RoomGuard]
 })
 export class SharedModule {
 }
