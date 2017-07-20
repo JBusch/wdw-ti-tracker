@@ -1,6 +1,6 @@
 @import 'app/shared/scss/reset';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900');
-@import url('~https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 html {
@@ -36,7 +36,7 @@ h3 {
 
 h4 {
   font-size: $heading-fontsize-base - 0.6rem;
-  line-height: $heading-fontsize-base * 1.9;
+  line-height: $heading-fontsize-base * 1.1;
 }
 
 p {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MessagesService} from './shared/messages.service';
+import {MessagesService} from './shared/services/messages.service';
 
 @Component({
   selector: 'wdw-root',
@@ -12,11 +12,11 @@ export class AppComponent {
   constructor(private messagesService: MessagesService) {
   }
 
-  public openDialog() {
-    this.messagesService
-      .confirm('Confirm Dialog', 'Are you sure you want to do this?')
-      .subscribe(res => this.result = res);
-  }
+  // public openDialog() {
+  //   this.messagesService
+  //     .confirm('Confirm Dialog', 'Are you sure you want to do this?')
+  //     .subscribe(res => this.result = res);
+  // }
 
 
 }

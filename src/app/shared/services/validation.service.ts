@@ -37,9 +37,7 @@ export class ValidationService {
         console.log(formValue);
         console.log(listOfUsernames);
         const listOfUsernamesLength = listOfUsernames.length;
-        // if(listOfUsernames.indexOf(formValue.displayName))
         for (let i = 0; i < listOfUsernamesLength; i++) {
-          console.log(listOfUsernames[i].$key);
           if (listOfUsernames[i].$key === formValue.displayName) {
             // username in use, so send error
             return true;

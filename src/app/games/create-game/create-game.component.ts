@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {GamesService} from '../../shared/games.service';
+import {GamesService} from '../../shared/services/games.service';
 
 @Component({
   selector: 'wdw-create-game',
@@ -24,8 +24,10 @@ export class CreateGameComponent implements OnInit {
     });
   }
 
-  createGame(formValue) {
-    this.gamesService.createGame(formValue);
+  createGame(formValue: FormGroup) {
+    this.gamesService.createGame(formValue).subscribe((res) => {
+      console.log(res);
+    });
   }
 
 

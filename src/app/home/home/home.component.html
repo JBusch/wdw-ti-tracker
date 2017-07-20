@@ -10,7 +10,17 @@
   </div>
 
   <div class="column-right-content">
-    <h2>Laufende Spiele</h2>
+    <!--<div *ngIf="user | async as user" class="userblock">-->
+    <!--<h2>Angemeldet als:</h2>-->
+    <!--<pre>{{ user | json }}</pre>-->
+    <!--{{ user.displayName }}-->
+
+    <!--</div>-->
+
+
+    <h3>Laufende Spiele</h3>
+    <wdw-list-games></wdw-list-games>
+
   </div>
 
 </wdw-layout-two-column-main-right>

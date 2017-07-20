@@ -1,3 +1,17 @@
-<p>
-  list-games works!
-</p>
+<!--<div *ngFor="let game of gameList | async">-->
+<!--<h4 md-line>Spielname: {{ game.gameName }}</h4>-->
+<!--<p md-line>Spielersteller: {{ game.creatorDisplayName }}</p>-->
+<!--</div>-->
+
+
+<md-list>
+  <md-list-item *ngFor="let game of gameList | async">
+    <h4 md-line>
+      <md-icon>casino</md-icon>
+      Spielname: {{ game.gameName }}
+    </h4>
+    <p md-line>Spielersteller: {{ game.creatorDisplayName }}</p>
+    <button color="primary" md-line md-raised-button [routerLink]="['/games', game.$key]">Join Game!</button>
+
+  </md-list-item>
+</md-list>

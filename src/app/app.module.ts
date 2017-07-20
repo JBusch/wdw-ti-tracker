@@ -4,21 +4,21 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
-import {AuthService} from './shared/auth.service';
+import {AuthService} from './shared/services/auth.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {UserProfileService} from './shared/user-profile.service';
-import {ValidationService} from './shared/validation.service';
+import {UserService} from './shared/services/user.service';
+import {ValidationService} from './shared/services/validation.service';
 import {SharedModule} from './shared/shared.module';
 import {LayoutModule} from './layout/layout.module';
 
 import 'hammerjs';
-import {MessagesService} from './shared/messages.service';
+import {MessagesService} from './shared/services/messages.service';
 import {MessagesModule} from './messages/messages.module';
-import {GamesService} from './shared/games.service';
+import {GamesService} from './shared/services/games.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import {GamesService} from './shared/games.service';
   ],
   providers: [
     AuthService,
-    UserProfileService,
+    UserService,
     ValidationService,
     MessagesService,
     GamesService

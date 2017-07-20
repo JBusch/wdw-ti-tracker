@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {MdDialog, MdDialogRef} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
-import {errorLoginComponent} from '../messages/errorLogin/errorLogin.component';
+import {errorLoginComponent} from '../../messages/errorLogin/errorLogin.component';
 
 @Injectable()
 export class MessagesService {

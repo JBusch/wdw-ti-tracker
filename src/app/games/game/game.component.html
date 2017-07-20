@@ -1,3 +1,6 @@
-<p>
-  game works!
-</p>
+<div *ngIf="game | async as game">
+  <h1>Willkommen im Spiel: {{ game.gameName }}</h1>
+
+</div>
+
+

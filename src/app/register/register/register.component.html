@@ -4,20 +4,20 @@
   <form novalidate [formGroup]="form"
         fxLayout="column">
     <md-input-container>
-      <input mdInput placeholder="Email" type="text" name="email" formControlName="email"/>
+      <input mdInput placeholder="Email" type="text" name="email" formControlName="email" required/>
     </md-input-container>
-    <div *ngIf="formErrors.email" class="alert alert-danger">
+    <md-error *ngIf="formErrors.email">
       {{ formErrors.email }}
-    </div>
-
+    </md-error>
     <md-error *ngIf="errorEmailInUse$ | async">
       Email Adresse schon vergeben. Passwort vergessen?
     </md-error>
+
     <md-input-container>
-      <input mdInput placeholder="Password" type="text" name="password" formControlName="password"/>
+      <input mdInput placeholder="Password" type="text" name="password" formControlName="password" required/>
     </md-input-container>
     <md-input-container>
-      <input mdInput placeholder="Confirm Password" type="text" name="confirm" formControlName="confirm"/>
+      <input mdInput placeholder="Confirm Password" type="text" name="confirm" formControlName="confirm" required/>
     </md-input-container>
 
     <button md-raised-button (click)="signUp()" [disabled]="!isPasswordMatch()">Registrieren</button>

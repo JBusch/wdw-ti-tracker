@@ -6,12 +6,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/first';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase';
 import {AngularFireAuth} from 'angularfire2/auth';
 
 @Injectable()
-export class UserProfileService {
+export class UserService {
 
   constructor(private db: AngularFireDatabase,
               private afAuth: AngularFireAuth) {
@@ -33,9 +34,16 @@ export class UserProfileService {
       })
   }
 
-  checkUsername(user: firebase.User, displayName: string) {
-    const usernames = this.db.list('usernames');
-    console.log(usernames);
+  getUserUid(): Observable<string> {
+    return this.afAuth.authState.map((user) => {
+      return user.uid;
+    });
+  }
+
+  getFirebaseUser(): Observable<firebase.User> {
+    return this.afAuth.authState.map((user) => {
+      return user;
+    });
   }
 }
 

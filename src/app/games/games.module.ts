@@ -22,6 +22,13 @@ import {SharedModule} from '../shared/shared.module';
     CreateGameComponent,
     JoinGameComponent,
     ListGamesComponent
+  ],
+  exports: [
+    GamesComponent,
+    GameComponent,
+    CreateGameComponent,
+    JoinGameComponent,
+    ListGamesComponent
   ]
 })
 export class GamesModule {

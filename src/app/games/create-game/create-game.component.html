@@ -1,5 +1,8 @@
 <wdw-layout-one-column-main>
 
+  <h1>Spiel erstellen</h1>
+  <p>Hier hast du die Möglichkeit ein neues Spiel zu erstellen.</p>
+
   <form novalidate [formGroup]="form" (ngSubmit)="createGame(form)">
     <md-input-container>
       <input mdInput placeholder="Name des Spiels" type="text" name="gameName" formControlName="gameName"/>
@@ -15,6 +18,7 @@
     </md-input-container>
 
     <button md-raised-button>Senden</button>
+
   </form>
 
 </wdw-layout-one-column-main>

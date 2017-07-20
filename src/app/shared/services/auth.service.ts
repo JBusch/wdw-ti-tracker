@@ -40,14 +40,9 @@ export class AuthService {
           console.log(err);
         })
     )
-      .map(() => true )
+      .map(() => true)
       .catch(() => {
         return Observable.of(true);
       });
   }
-
-  // setDisplayName(displayName: string){
-  //   this.afAuth
-  // }
-
 }

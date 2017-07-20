@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../shared/auth.service';
+import {AuthService} from '../../shared/services/auth.service';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from 'angularfire2/auth';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'wdw-home',
@@ -13,14 +14,14 @@ export class HomeComponent implements OnInit {
   user: Observable<firebase.User>;
 
   constructor(private authService: AuthService,
-              public afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private userService: UserService) {
   }
 
   ngOnInit() {
-    this.user = this.afAuth.authState;
-
-    console.log(this.user);
+    // this.user = this.userService.getUserUid();
   }
+
 
   logout() {
     this.authService.logout();
