@@ -18,22 +18,9 @@ export class RoomGuard implements CanActivate {
     const gameUid = next.params.uid;
     const firebaseUser = this.userService.getFirebaseUser();
 
-    console.log(next, state);
-
-    // TODO this never completes, also it sucks, because it dos not handle users which open two windows
-    // if a user leaves one window, but is in the room in another one, he gets disconected anyway...
-    // Add User to gmae on join
+    // Add User to game on join
     return firebaseUser.switchMap((user) => {
-      // const {game$: g, user: u} = {game$, user};
       return this.gamesService.addUserToGame(gameUid, user);
     });
-    // .subscribe((res) => {
-    //     return res;
-    //   }, error => console.log(error),
-    //   () => {
-    //     console.log('completed');
-    //   });
-
-    // return true;
   }
 }

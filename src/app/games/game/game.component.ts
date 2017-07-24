@@ -33,25 +33,6 @@ export class GameComponent implements OnInit, OnDestroy {
       });
 
     this.gameKey$ = this.game$.map(game => game.$key);
-    //
-    // // TODO this never completes, also it sucks, because it dos not handle users which open two windows
-    // // if a user leaves one window, but is in the room in another one, he gets disconected anyway...
-    // // Add User to gmae on join
-    // this.joinAndRemoveUsersToGame$ = this.game$
-    //   .switchMap((game) =>
-    //       this.userService.getFirebaseUser(), (game, user) => {
-    //       return {game: game.$key, user: user}
-    //     }
-    //   ).switchMap(({game, user}) => {
-    //     // const {game$: g, user: u} = {game$, user};
-    //     return this.gamesService.addUserToGame(game, user);
-    //   })
-    //   .subscribe((res) => {
-    //       console.log(res);
-    //     }, error => console.log(error),
-    //     () => {
-    //       console.log('completed');
-    //     });
 
     this.usersJoinedCount$ = this.gamesService.getJoinedUsers(this.gameKey$);
 

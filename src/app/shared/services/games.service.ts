@@ -7,6 +7,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -53,13 +54,9 @@ export class GamesService {
   // Todo make the obseravable complete
   addUserToGame(gameUid: string, user: firebase.User): Observable<boolean> {
     return Observable.fromPromise(
-      this.db.object(`joinedUsers/${gameUid}/`)
-        .update({
-          [user.uid]: {username: user.displayName, count: 0}
-        }).then((res) => {
-        console.log(res);
-      })
-    ).map(() => true)
+      this.db.object(`joinedUsers/${gameUid}/`).update({[user.uid]: {username: user.displayName, count: 0}})
+    )
+      .map(() => true)
       .catch(err => {
         return Observable.of(false);
       })
@@ -92,7 +89,8 @@ export class GamesService {
     return Observable.fromPromise(
       this.db.object(`joinedUsers/${gameUid}/${user.uid}`)
         .remove()
-    ).take(1);
+    )
+      .take(1);
   }
 
   getJoinedUsers(gameUid$) {
