@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListGamesComponent } from './list-games.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { AppModule } from '../../app.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ListGamesComponent', () => {
   let component: ListGamesComponent;
@@ -8,9 +11,11 @@ describe('ListGamesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListGamesComponent ]
+      imports: [AppModule, RouterTestingModule],
+      declarations: [ListGamesComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
